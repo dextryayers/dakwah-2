@@ -1,0 +1,153 @@
+import React from 'react';
+import {useCurrentFrame} from 'remotion';
+import {Scene} from '../../components/Scene';
+import {MaskLine} from '../../components/MaskLine';
+import {ArabicText} from '../../components/ArabicText';
+import {ReferenceLabel} from '../../components/ReferenceLabel';
+import {Kicker, Folio} from '../../components/Kicker';
+import {Rule, SignalSquare} from '../../components/Rule';
+import {Salawat} from '../../components/Salawat';
+import {C, INK_12} from '../../styles/colors';
+import {F} from '../../styles/typography';
+import {M, CONTENT} from '../../styles/layout';
+import {lerp} from '../../utils/animations';
+
+export const SCENE_04_DURATION = 390; // 32–45s
+
+/**
+ * THE UNDERSTANDING.
+ * The one scene that makes an explicit argument, so it is the one scene built
+ * as information design: a numbered index of three criteria, then the ayah
+ * set in a framed block beneath. Numbering here is functional, not ornamental.
+ */
+export const Scene04Understanding: React.FC = () => {
+  const frame = useCurrentFrame();
+
+  const headIn = lerp(frame, 6, 40, 0, 1);
+  const ayahIn = lerp(frame, 214, 248, 0, 1);
+
+  const items: Array<{n: string; at: number; title: React.ReactNode; sub: string}> = [
+    {n: '01', at: 66, title: 'Petunjuk Allah', sub: 'bukan suara mayoritas'},
+    {n: '02', at: 88, title: 'Ilmu yang benar', sub: 'bukan sekadar perasaan'},
+    {
+      n: '03',
+      at: 110,
+      title: (
+        <>
+          Tuntunan Rasulullah <Salawat />
+        </>
+      ),
+      sub: 'bukan tradisi tanpa dalil',
+    },
+  ];
+
+  return (
+    <Scene>
+      <div style={{position: 'absolute', left: M, top: 92, right: M, display: 'flex', justifyContent: 'space-between'}}>
+        <Folio at={4} n="04" label="The Understanding" />
+        <Kicker at={10} color={C.stone} size={18}>Ukuran Kebenaran</Kicker>
+      </div>
+      <Rule at={10} dur={40} style={{position: 'absolute', left: M, top: 132, width: CONTENT}} />
+
+      {/* the correction */}
+      <div style={{position: 'absolute', left: M, right: M, top: 206, opacity: headIn}}>
+        <div style={{display: 'flex', alignItems: 'center', gap: 16, marginBottom: 32}}>
+          <SignalSquare at={8} size={12} />
+          <Kicker at={10} color={C.signal} size={19}>Namun perlu dicatat</Kicker>
+        </div>
+        <MaskLine at={14} dur={36}>
+          <div style={{fontFamily: F.serif, fontWeight: 300, fontSize: 80, lineHeight: 1.13, letterSpacing: '-0.02em', color: C.ink}}>
+            Merasa berbeda bukan
+          </div>
+        </MaskLine>
+        <MaskLine at={24} dur={36}>
+          <div style={{fontFamily: F.serif, fontWeight: 300, fontSize: 80, lineHeight: 1.13, letterSpacing: '-0.02em', color: C.ink}}>
+            berarti otomatis
+          </div>
+        </MaskLine>
+        <MaskLine at={34} dur={36}>
+          <div style={{fontFamily: F.serif, fontWeight: 600, fontSize: 80, lineHeight: 1.13, letterSpacing: '-0.02em', color: C.signal}}>
+            berada di atas kebenaran.
+          </div>
+        </MaskLine>
+      </div>
+
+      {/* criteria index */}
+      <div style={{position: 'absolute', left: M, right: M, top: 726}}>
+        <div style={{display: 'flex', alignItems: 'center', gap: 18, marginBottom: 22, opacity: lerp(frame, 58, 86, 0, 1)}}>
+          <Kicker at={58} color={C.stone} size={17}>Ukurannya adalah</Kicker>
+          <div style={{flex: 1, height: 1, backgroundColor: INK_12}} />
+        </div>
+
+        {items.map((it) => {
+          const p = lerp(frame, it.at, it.at + 32, 0, 1);
+          return (
+            <div key={it.n} style={{opacity: p, transform: `translateY(${(1 - p) * 14}px)`}}>
+              <div style={{display: 'flex', alignItems: 'baseline', gap: 28, paddingTop: 20, paddingBottom: 18}}>
+                <span
+                  style={{
+                    fontFamily: F.body,
+                    fontSize: 21,
+                    fontWeight: 500,
+                    letterSpacing: '0.1em',
+                    color: C.signal,
+                    fontVariantNumeric: 'tabular-nums',
+                    width: 40,
+                    flexShrink: 0,
+                  }}
+                >
+                  {it.n}
+                </span>
+                <div style={{flex: 1}}>
+                  <div
+                    style={{
+                      fontFamily: F.display,
+                      fontSize: 50,
+                      fontWeight: 500,
+                      letterSpacing: '-0.025em',
+                      lineHeight: 1.15,
+                      color: C.ink,
+                    }}
+                  >
+                    {it.title}
+                  </div>
+                  <div style={{fontFamily: F.body, fontSize: 21, color: C.stone, marginTop: 8, letterSpacing: '0.01em'}}>
+                    {it.sub}
+                  </div>
+                </div>
+              </div>
+              <div style={{height: 1, backgroundColor: INK_12}} />
+            </div>
+          );
+        })}
+      </div>
+
+      {/* AYAH */}
+      <div
+        style={{
+          position: 'absolute',
+          left: M,
+          right: M,
+          top: 1290,
+          opacity: ayahIn,
+          transform: `translateY(${(1 - ayahIn) * 24}px)`,
+        }}
+      >
+        <div style={{backgroundColor: C.white, borderLeft: `8px solid ${C.signal}`, padding: '38px 44px 34px'}}>
+          <ArabicText at={220} size={46} lineHeight={1.85} stagger={4} text="وَلَا تَقْفُ مَا لَيْسَ لَكَ بِهٖ عِلْمٌ" />
+          <div style={{marginTop: 22, fontFamily: F.serif, fontStyle: 'italic', fontSize: 34, lineHeight: 1.4, color: C.ink}}>
+            “Janganlah engkau mengikuti sesuatu yang tidak kauketahui.”
+          </div>
+          <div style={{marginTop: 24}}>
+            <ReferenceLabel at={262} source="QS. Al-Isra: 36" color={C.ink} mutedColor={C.stone} />
+          </div>
+        </div>
+      </div>
+
+      <div style={{position: 'absolute', left: M, right: M, bottom: 90, display: 'flex', justifyContent: 'space-between'}}>
+        <Kicker at={270} color={C.stone} size={17}>Ilmu sebelum amal</Kicker>
+        <Kicker at={276} color={C.stone} size={17}>04</Kicker>
+      </div>
+    </Scene>
+  );
+};
