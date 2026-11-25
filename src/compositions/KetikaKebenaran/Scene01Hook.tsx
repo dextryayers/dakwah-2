@@ -9,7 +9,6 @@ import {F} from '../../styles/typography';
 import {M, CONTENT} from '../../styles/layout';
 import {lerp, springAt} from '../../utils/animations';
 
-export const SCENE_01_DURATION = 210; // 0–7s
 
 /**
  * THE HOOK.
@@ -23,21 +22,22 @@ export const Scene01Hook: React.FC = () => {
   const {fps} = useVideoConfig();
 
   // ASING is uncovered upward, then settles very slightly in scale.
-  const wordP = springAt(frame, fps, 12, {damping: 190, stiffness: 90});
+  // 0.62 floor: the word is legible on frame 0 and only *settles* after the cut.
+  const wordP = Math.min(1, 0.62 + 0.38 * springAt(frame, fps, 0, {damping: 190, stiffness: 90}));
   const scale = lerp(frame, 12, 200, 1.04, 1.0);
   const shiftX = lerp(frame, 118, 158, 0, -30);
 
-  const pre = lerp(frame, 2, 20, 0, 1);
+  const pre = lerp(frame, 0, 14, 0, 1);
   const preOut = lerp(frame, 34, 46, 1, 0);
 
-  const meta = lerp(frame, 66, 92, 0, 1);
-  const turnIn = lerp(frame, 112, 146, 0, 1);
+  const meta = Math.max(0.7, lerp(frame, 20, 56, 0, 1));
+  const turnIn = Math.max(0.65, lerp(frame, 40, 96, 0, 1));
 
   return (
     <Scene>
       <div style={{position: 'absolute', left: M, top: 92, right: M, display: 'flex', justifyContent: 'space-between'}}>
         <Kicker at={0} color={C.ink}>Editorial Dakwah</Kicker>
-        <Kicker at={6} color={C.stone}>01 / 06</Kicker>
+        <Kicker at={6} color={C.stone}>01 / 07</Kicker>
       </div>
       <Rule at={8} dur={40} style={{position: 'absolute', left: M, top: 132, width: CONTENT}} />
 

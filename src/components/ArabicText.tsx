@@ -39,7 +39,8 @@ export const ArabicText: React.FC<{
       }}
     >
       {words.map((w, i) => {
-        const p = lerp(frame, at + i * stagger, at + i * stagger + 24, 0, 1);
+        // Floor at 0.55: the first word is already legible on the cut frame.
+        const p = Math.max(0.55, lerp(frame, at + i * stagger, at + i * stagger + 24, 0, 1));
         return (
           <span
             key={`${w}-${i}`}

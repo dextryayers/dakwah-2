@@ -12,7 +12,6 @@ import {F} from '../../styles/typography';
 import {M, CONTENT} from '../../styles/layout';
 import {lerp} from '../../utils/animations';
 
-export const SCENE_03_DURATION = 450; // 17–32s
 
 /**
  * THE DALIL.
@@ -24,10 +23,10 @@ export const SCENE_03_DURATION = 450; // 17–32s
 export const Scene03Hadith: React.FC = () => {
   const frame = useCurrentFrame();
 
-  const arabicIn = lerp(frame, 30, 60, 0, 1);
-  const transIn = lerp(frame, 150, 186, 0, 1);
+  const arabicIn = Math.max(0.9, lerp(frame, 0, 20, 0, 1));
+  const transIn = lerp(frame, 180, 220, 0, 1);
   const refIn = lerp(frame, 200, 232, 0, 1);
-  const readCue = lerp(frame, 246, 276, 0, 1);
+  const readCue = lerp(frame, 270, 310, 0, 1);
 
   return (
     <Scene bg={C.ink}>
@@ -65,27 +64,27 @@ export const Scene03Hadith: React.FC = () => {
         </div>
 
         <div style={{marginTop: 40}}>
-          <MaskLine at={158} dur={40}>
+          <MaskLine at={188} dur={40}>
             <div style={{fontFamily: F.serif, fontWeight: 300, fontSize: 62, lineHeight: 1.32, letterSpacing: '-0.01em', color: C.paper}}>
               “Islam bermula dalam keadaan asing,
             </div>
           </MaskLine>
-          <MaskLine at={168} dur={40}>
+          <MaskLine at={198} dur={40}>
             <div style={{fontFamily: F.serif, fontWeight: 300, fontSize: 62, lineHeight: 1.32, letterSpacing: '-0.01em', color: C.paper}}>
               dan akan kembali sebagaimana
             </div>
           </MaskLine>
-          <MaskLine at={178} dur={40}>
+          <MaskLine at={208} dur={40}>
             <div style={{fontFamily: F.serif, fontWeight: 300, fontSize: 62, lineHeight: 1.32, letterSpacing: '-0.01em', color: C.paper}}>
               awalnya dalam keadaan asing.
             </div>
           </MaskLine>
-          <MaskLine at={192} dur={40}>
+          <MaskLine at={222} dur={40}>
             <div style={{fontFamily: F.serif, fontWeight: 600, fontSize: 62, lineHeight: 1.32, letterSpacing: '-0.01em', color: C.paper}}>
               Maka beruntunglah
             </div>
           </MaskLine>
-          <MaskLine at={200} dur={40}>
+          <MaskLine at={230} dur={40}>
             <div style={{fontFamily: F.serif, fontWeight: 600, fontSize: 62, lineHeight: 1.32, letterSpacing: '-0.01em', color: C.signal}}>
               orang-orang yang asing.”
             </div>
@@ -94,7 +93,7 @@ export const Scene03Hadith: React.FC = () => {
 
         <div style={{marginTop: 54, opacity: refIn}}>
           <ReferenceLabel
-            at={204}
+            at={246}
             source="HR. Muslim no. 145"
             detail="Kitab al-Īmān"
             color={C.paper}

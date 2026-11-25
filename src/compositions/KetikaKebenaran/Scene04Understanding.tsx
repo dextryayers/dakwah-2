@@ -12,7 +12,6 @@ import {F} from '../../styles/typography';
 import {M, CONTENT} from '../../styles/layout';
 import {lerp} from '../../utils/animations';
 
-export const SCENE_04_DURATION = 390; // 32–45s
 
 /**
  * THE UNDERSTANDING.
@@ -23,15 +22,17 @@ export const SCENE_04_DURATION = 390; // 32–45s
 export const Scene04Understanding: React.FC = () => {
   const frame = useCurrentFrame();
 
-  const headIn = lerp(frame, 6, 40, 0, 1);
-  const ayahIn = lerp(frame, 214, 248, 0, 1);
+  const headIn = Math.max(0.9, lerp(frame, 0, 22, 0, 1));
+  const ayahIn = lerp(frame, 452, 492, 0, 1);
+  const negIn = Math.max(0.8, lerp(frame, 160, 186, 0, 1));
+  const negOut = lerp(frame, 360, 392, 0, 1);
 
   const items: Array<{n: string; at: number; title: React.ReactNode; sub: string}> = [
-    {n: '01', at: 66, title: 'Petunjuk Allah', sub: 'bukan suara mayoritas'},
-    {n: '02', at: 88, title: 'Ilmu yang benar', sub: 'bukan sekadar perasaan'},
+    {n: '01', at: 392, title: 'Petunjuk Allah', sub: 'bukan suara mayoritas'},
+    {n: '02', at: 414, title: 'Ilmu yang benar', sub: 'bukan sekadar perasaan'},
     {
       n: '03',
-      at: 110,
+      at: 436,
       title: (
         <>
           Tuntunan Rasulullah <Salawat />
@@ -72,10 +73,72 @@ export const Scene04Understanding: React.FC = () => {
         </MaskLine>
       </div>
 
+
+      {/* the negative list — what the measure is NOT (spoken by u2) */}
+      <div
+        style={{
+          position: 'absolute',
+          left: M,
+          right: M,
+          top: 690,
+          opacity: negIn * (1 - negOut),
+          transform: `translateY(${(1 - negIn) * 18}px)`,
+        }}
+      >
+        <div style={{display: 'flex', alignItems: 'center', gap: 18, marginBottom: 26}}>
+          <Kicker at={170} color={C.stone} size={17}>Ukurannya bukan</Kicker>
+          <div style={{flex: 1, height: 1, backgroundColor: INK_12}} />
+        </div>
+        {[
+          {at: 178, t: 'Perasaan'},
+          {at: 200, t: 'Popularitas'},
+          {at: 222, t: 'Banyaknya pengikut'},
+        ].map((it) => {
+          const p2 = lerp(frame, it.at, it.at + 30, 0, 1);
+          const strike = lerp(frame, it.at + 22, it.at + 54, 0, 1);
+          return (
+            <div
+              key={it.t}
+              style={{
+                padding: '22px 0',
+                opacity: p2,
+                transform: `translateX(${(1 - p2) * -16}px)`,
+                borderBottom: `1px solid ${INK_12}`,
+              }}
+            >
+              <span style={{position: 'relative', display: 'inline-block'}}>
+                <span
+                  style={{
+                    fontFamily: F.display,
+                    fontSize: 62,
+                    fontWeight: 500,
+                    letterSpacing: '-0.03em',
+                    color: C.stone,
+                  }}
+                >
+                  {it.t}
+                </span>
+                {/* the rule is the argument: these are struck out as measures */}
+                <span
+                  style={{
+                    position: 'absolute',
+                    left: 0,
+                    top: '54%',
+                    height: 3,
+                    width: `${strike * 100}%`,
+                    backgroundColor: C.signal,
+                  }}
+                />
+              </span>
+            </div>
+          );
+        })}
+      </div>
+
       {/* criteria index */}
-      <div style={{position: 'absolute', left: M, right: M, top: 726}}>
-        <div style={{display: 'flex', alignItems: 'center', gap: 18, marginBottom: 22, opacity: lerp(frame, 58, 86, 0, 1)}}>
-          <Kicker at={58} color={C.stone} size={17}>Ukurannya adalah</Kicker>
+      <div style={{position: 'absolute', left: M, right: M, top: 700}}>
+        <div style={{display: 'flex', alignItems: 'center', gap: 18, marginBottom: 22, opacity: lerp(frame, 380, 404, 0, 1)}}>
+          <Kicker at={380} color={C.stone} size={17}>Ukurannya adalah</Kicker>
           <div style={{flex: 1, height: 1, backgroundColor: INK_12}} />
         </div>
 
@@ -128,18 +191,18 @@ export const Scene04Understanding: React.FC = () => {
           position: 'absolute',
           left: M,
           right: M,
-          top: 1290,
+          top: 1218,
           opacity: ayahIn,
           transform: `translateY(${(1 - ayahIn) * 24}px)`,
         }}
       >
         <div style={{backgroundColor: C.white, borderLeft: `8px solid ${C.signal}`, padding: '38px 44px 34px'}}>
-          <ArabicText at={220} size={46} lineHeight={1.85} stagger={4} text="وَلَا تَقْفُ مَا لَيْسَ لَكَ بِهٖ عِلْمٌ" />
+          <ArabicText at={462} size={46} lineHeight={1.85} stagger={4} text="وَلَا تَقْفُ مَا لَيْسَ لَكَ بِهٖ عِلْمٌ" />
           <div style={{marginTop: 22, fontFamily: F.serif, fontStyle: 'italic', fontSize: 34, lineHeight: 1.4, color: C.ink}}>
             “Janganlah engkau mengikuti sesuatu yang tidak kauketahui.”
           </div>
           <div style={{marginTop: 24}}>
-            <ReferenceLabel at={262} source="QS. Al-Isra: 36" color={C.ink} mutedColor={C.stone} />
+            <ReferenceLabel at={500} source="QS. Al-Isra: 36" color={C.ink} mutedColor={C.stone} />
           </div>
         </div>
       </div>

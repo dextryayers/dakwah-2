@@ -9,7 +9,6 @@ import {F} from '../../styles/typography';
 import {M, CONTENT} from '../../styles/layout';
 import {lerp, EASE_IN_OUT} from '../../utils/animations';
 
-export const SCENE_02_DURATION = 300; // 7–17s
 
 /**
  * THE CONFLICT.
@@ -21,14 +20,14 @@ export const SCENE_02_DURATION = 300; // 7–17s
 export const Scene02Conflict: React.FC = () => {
   const frame = useCurrentFrame();
 
-  const stageB = lerp(frame, 150, 184, 0, 1, EASE_IN_OUT);
+  const stageB = lerp(frame, 246, 280, 0, 1, EASE_IN_OUT);
 
-  const in1 = lerp(frame, 14, 46, 0, 1);
-  const in2 = lerp(frame, 30, 62, 0, 1);
-  const in3 = lerp(frame, 52, 84, 0, 1);
-  const in4 = lerp(frame, 86, 118, 0, 1);
+  const in1 = Math.max(0.85, lerp(frame, 0, 24, 0, 1));
+  const in2 = Math.max(0.85, lerp(frame, 0, 26, 0, 1));
+  const in3 = Math.max(0.8, lerp(frame, 8, 34, 0, 1));
+  const in4 = Math.max(0.75, lerp(frame, 100, 140, 0, 1));
 
-  const qIn = lerp(frame, 190, 224, 0, 1);
+  const qIn = lerp(frame, 284, 316, 0, 1);
 
   return (
     <Scene>
@@ -114,7 +113,7 @@ export const Scene02Conflict: React.FC = () => {
         </div>
 
         {/* bottom anchor */}
-        <div style={{position: 'absolute', left: 0, right: 0, top: 1170, opacity: in4}}>
+        <div style={{position: 'absolute', left: 0, right: 0, top: 1108, opacity: in4}}>
           <div style={{width: 160, height: 2, backgroundColor: C.signal, marginBottom: 30}} />
           <div
             style={{
@@ -144,34 +143,34 @@ export const Scene02Conflict: React.FC = () => {
         }}
       >
         <div style={{display: 'flex', alignItems: 'center', gap: 16}}>
-          <SignalSquare at={190} size={12} />
-          <Kicker at={192} color={C.signal} size={19}>Pertanyaannya</Kicker>
+          <SignalSquare at={290} size={12} />
+          <Kicker at={292} color={C.signal} size={19}>Pertanyaannya</Kicker>
         </div>
 
         <div style={{marginTop: 52}}>
-          <MaskLine at={198} dur={34}>
+          <MaskLine at={300} dur={34}>
             <div style={{fontFamily: F.serif, fontWeight: 300, fontSize: 96, lineHeight: 1.1, letterSpacing: '-0.025em', color: C.ink}}>
               Namun, apakah
             </div>
           </MaskLine>
-          <MaskLine at={208} dur={34}>
+          <MaskLine at={310} dur={34}>
             <div style={{fontFamily: F.serif, fontWeight: 300, fontSize: 96, lineHeight: 1.1, letterSpacing: '-0.025em', color: C.stone}}>
               kebenaran harus
             </div>
           </MaskLine>
-          <MaskLine at={218} dur={34}>
+          <MaskLine at={320} dur={34}>
             <div style={{fontFamily: F.serif, fontWeight: 300, fontSize: 96, lineHeight: 1.1, letterSpacing: '-0.025em', color: C.ink}}>
               mengikuti yang
             </div>
           </MaskLine>
-          <MaskLine at={228} dur={34}>
+          <MaskLine at={330} dur={34}>
             <div style={{fontFamily: F.serif, fontWeight: 600, fontSize: 96, lineHeight: 1.1, letterSpacing: '-0.025em', color: C.signal}}>
               dianggap biasa?
             </div>
           </MaskLine>
         </div>
 
-        <Rule at={244} dur={40} style={{marginTop: 64, width: 320}} />
+        <Rule at={350} dur={40} style={{marginTop: 64, width: 320}} />
 
         <div
           style={{
@@ -181,7 +180,7 @@ export const Scene02Conflict: React.FC = () => {
             lineHeight: 1.6,
             color: C.stone,
             maxWidth: 660,
-            opacity: lerp(frame, 252, 280, 0, 1),
+            opacity: lerp(frame, 358, 386, 0, 1),
           }}
         >
           Popularitas bukan ukuran.

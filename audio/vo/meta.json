@@ -1,0 +1,86 @@
+[
+  {
+    "scene": "s02",
+    "key": "b1",
+    "text": "Ketika sesuatu yang benar dianggap aneh.",
+    "engine": "neural",
+    "duration": 2.189
+  },
+  {
+    "scene": "s02",
+    "key": "b2",
+    "text": "Ketika mengikuti tuntunan agama terasa berbeda dari kebiasaan di sekitar kita.",
+    "engine": "neural",
+    "duration": 4.257
+  },
+  {
+    "scene": "s02",
+    "key": "b3",
+    "text": "Namun, apakah kebenaran harus selalu mengikuti apa yang dianggap biasa oleh manusia?",
+    "engine": "neural",
+    "duration": 4.676
+  },
+  {
+    "scene": "s03",
+    "key": "hadith",
+    "text": "Islam bermula dalam keadaan asing, dan akan kembali sebagaimana awalnya dalam keadaan asing. Maka beruntunglah orang-orang yang asing.",
+    "engine": "neural",
+    "duration": 8.732
+  },
+  {
+    "scene": "s04",
+    "key": "u1",
+    "text": "Namun, merasa berbeda bukan berarti otomatis berada di atas kebenaran.",
+    "engine": "neural",
+    "duration": 4.388
+  },
+  {
+    "scene": "s04",
+    "key": "u2",
+    "text": "Ukuran kebenaran bukanlah perasaan, popularitas, ataupun banyaknya pengikut.",
+    "engine": "neural",
+    "duration": 4.933
+  },
+  {
+    "scene": "s04",
+    "key": "u3",
+    "text": "Melainkan petunjuk Allah, ilmu yang benar, dan mengikuti tuntunan Rasulullah.",
+    "engine": "neural",
+    "duration": 4.748
+  },
+  {
+    "scene": "s05",
+    "key": "r1",
+    "text": "Maka jangan berhenti belajar hanya karena merasa berbeda.",
+    "engine": "neural",
+    "duration": 3.078
+  },
+  {
+    "scene": "s05",
+    "key": "r2",
+    "text": "Periksa ilmu. Pahami dalilnya. Ikuti petunjuk Rasulullah.",
+    "engine": "neural",
+    "duration": 5.954
+  },
+  {
+    "scene": "s05",
+    "key": "r3",
+    "text": "Dan mintalah kepada Allah agar senantiasa diteguhkan di atas kebenaran.",
+    "engine": "neural",
+    "duration": 3.881
+  },
+  {
+    "scene": "s06",
+    "key": "c1",
+    "text": "Jangan mencari pengakuan manusia. Carilah ridha Allah.",
+    "engine": "neural",
+    "duration": 4.557
+  },
+  {
+    "scene": "s07",
+    "key": "outro",
+    "text": "Terima kasih telah menonton.",
+    "engine": "neural",
+    "duration": 1.605
+  }
+]

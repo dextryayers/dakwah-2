@@ -9,7 +9,6 @@ import {F} from '../../styles/typography';
 import {M, CONTENT} from '../../styles/layout';
 import {lerp} from '../../utils/animations';
 
-export const SCENE_05_DURATION = 300; // 45–55s
 
 /**
  * THE REFLECTION.
@@ -22,8 +21,8 @@ export const Scene05Reflection: React.FC = () => {
 
   const steps = [
     {at: 132, n: '01', t: 'Periksa ilmunya.'},
-    {at: 160, n: '02', t: 'Pahami dalilnya.'},
-    {at: 188, n: '03', t: 'Ikuti petunjuk Rasulullah ﷺ.'},
+    {at: 178, n: '02', t: 'Pahami dalilnya.'},
+    {at: 250, n: '03', t: 'Ikuti petunjuk Rasulullah ﷺ.'},
   ];
 
   return (
@@ -86,7 +85,7 @@ export const Scene05Reflection: React.FC = () => {
 
       {/* closing petition — the only centred block in the film */}
       <div style={{position: 'absolute', left: M, right: M, bottom: 270, textAlign: 'center'}}>
-        <div style={{opacity: lerp(frame, 214, 246, 0, 1)}}>
+        <div style={{opacity: lerp(frame, 340, 386, 0, 1)}}>
           <div style={{fontFamily: F.body, fontSize: 21, letterSpacing: '0.26em', textTransform: 'uppercase', color: C.stone}}>
             Dan mintalah kepada Allah
           </div>
@@ -110,8 +109,8 @@ export const Scene05Reflection: React.FC = () => {
       </div>
 
       <div style={{position: 'absolute', left: M, right: M, bottom: 90, display: 'flex', justifyContent: 'space-between'}}>
-        <Kicker at={230} color={C.stone} size={17}>Belajar · Memahami · Mengikuti</Kicker>
-        <Kicker at={236} color={C.stone} size={17}>05</Kicker>
+        <Kicker at={420} color={C.stone} size={17}>Belajar · Memahami · Mengikuti</Kicker>
+        <Kicker at={426} color={C.stone} size={17}>05</Kicker>
       </div>
     </Scene>
   );
